@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowflake-id-internal-svc
+  labels:
+    k8-playground/name: snowflake-id
+spec:
+  type: NodePort
+  selector:
+    k8-playground/name: snowflake-id
+  ports:
+    - name: app-port
+      port: 80
+      protocol: TCP
+      targetPort: 80

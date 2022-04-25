@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: snowflake-id-ingress
+  labels:
+    k8-playground/name: snowflake-id
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: snowflake.k8local
+      http:
+        paths:
+          - path: /id
+            pathType: Prefix
+            backend:
+              service:
+                name: snowflake-id-internal-svc
+                port:
+                  number: 80
